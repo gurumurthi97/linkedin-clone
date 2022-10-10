@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 const container = {
   backgroundColor: "white",
-  width: 450,
+  width: 650,
   borderRadius: 8,
+  margin: "auto",
+  marginTop: "10px",
+  marginButtom: "10px",
 };
 function Post({ author, content, time, likeCount }) {
   const [like, setLike] = useState(false);
@@ -32,7 +35,7 @@ function Post({ author, content, time, likeCount }) {
       </div>
       <div style={{ textAlign: "justify", padding: "10px" }}>{content}</div>
       <div style={{ padding: "10px", textAlign: "center" }}>
-        <img src="lady.jpg" width="70%" alt="lady" />
+        <img src="lady.jpg" width="50%" alt="lady" />
       </div>
       <div style={{ textAlign: "justify", padding: "10px", color: "#777" }}>
         {like ? (
