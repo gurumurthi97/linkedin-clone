@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 const container = {
   backgroundColor: "white",
   width: 450,
   borderRadius: 8,
 };
-function Post({ author, content, time }) {
+function Post({ author, content, time, likeCount }) {
+  const [like, setLike] = useState(false);
   return (
     <div style={container}>
       <div
@@ -30,8 +31,28 @@ function Post({ author, content, time }) {
         </div>
       </div>
       <div style={{ textAlign: "justify", padding: "10px" }}>{content}</div>
-      <div style={{ padding: "10px" }}>
-        <img src="lady.jpg" width="100%" alt="lady" />
+      <div style={{ padding: "10px", textAlign: "center" }}>
+        <img src="lady.jpg" width="70%" alt="lady" />
+      </div>
+      <div style={{ textAlign: "justify", padding: "10px", color: "#777" }}>
+        {like ? (
+          <span>You and other {likeCount} people like this post</span>
+        ) : (
+          <span>{likeCount} People liked the post</span>
+        )}
+      </div>
+      <div style={{ display: "flex", padding: "10px", textAlign: "center" }}>
+        <div
+          style={{ flex: 1, cursor: "pointer", color: like ? "blue" : "black" }}
+          onClick={() => {
+            setLike((prevLike) => !prevLike);
+          }}
+        >
+          <strong>Like</strong>
+        </div>
+        <div style={{ flex: 1, cursor: "pointer" }}>Commit</div>
+        <div style={{ flex: 1, cursor: "pointer" }}>Share</div>
+        <div style={{ flex: 1, cursor: "pointer" }}>Send</div>
       </div>
     </div>
   );
